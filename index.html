@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marwadi University | Education for Excellence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #102c54;
+    --secondary: #e7a52b;
+    --light: #f5f7fb;
+}
+
+body {
+    color: #333;
+}
+
+header {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px #00000015;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.logo span {
+    color: var(--secondary);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+.menu {
+    display: none;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+section {
+    padding: 100px 8%;
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(7,25,52,.9), rgba(7,25,52,.45)),
+    url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85');
+    background-position: center;
+    background-size: cover;
+}
+
+.home-content {
+    max-width: 700px;
+    padding-top: 50px;
+}
+
+.home h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.home h1 span {
+    color: var(--secondary);
+}
+
+.home p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background: var(--secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #c88a17;
+    transform: translateY(-3px);
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.heading h2 {
+    color: var(--primary);
+    font-size: 35px;
+}
+
+.heading span {
+    color: var(--secondary);
+}
+
+.heading p {
+    color: #777;
+    margin-top: 10px;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.about-container img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about-text h3 {
+    color: var(--primary);
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    line-height: 1.9;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.stats {
+    background: var(--primary);
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+    padding: 55px 8%;
+}
+
+.stat h2 {
+    color: var(--secondary);
+    font-size: 35px;
+}
+
+.stat p {
+    font-size: 14px;
+}
+
+.services {
+    background: var(--light);
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 20px #00000008;
+    transition: .3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px #00000015;
+}
+
+.service-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #777;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-info h3 {
+    color: var(--primary);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--secondary);
+}
+
+.contact-form textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer span {
+    color: var(--secondary);
+}
+
+@media(max-width: 768px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        gap: 20px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .about-container,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .service-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 480px) {
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">MARWADI<span> UNIVERSITY</span></div>
+
+    <nav id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- HOME -->
+<section class="home" id="home">
+    <div class="home-content">
+        <h1>Build Your Future With <span>Marwadi University</span></h1>
+        <p>
+            Discover your potential, explore new opportunities,
+            and achieve excellence through quality education
+            and innovation.
+        </p>
+        <a href="#about" class="btn">Explore More</a>
+        <a href="#contact" class="btn">Contact Us</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="heading">
+        <h2>About <span>Us</span></h2>
+        <p>Learn more about our university and our vision.</p>
+    </div>
+
+    <div class="about-container">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=85" alt="University campus">
+
+        <div class="about-text">
+            <h3>Welcome to Marwadi University</h3>
+            <p>
+                Marwadi University is an educational institution
+                located in Rajkot, Gujarat, India. It provides
+                students with opportunities to develop academic
+                knowledge, practical skills and professional abilities.
+            </p>
+            <p>
+                Our goal is to encourage innovation, creativity,
+                leadership and lifelong learning through quality
+                education and a supportive learning environment.
+            </p>
+            <a href="#services" class="btn">Our Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<div class="stats">
+    <div class="stat">
+        <h2>100+</h2>
+        <p>Programs</p>
+    </div>
+    <div class="stat">
+        <h2>10000+</h2>
+        <p>Students</p>
+    </div>
+    <div class="stat">
+        <h2>500+</h2>
+        <p>Faculty Members</p>
+    </div>
+    <div class="stat">
+        <h2>50+</h2>
+        <p>Campus Facilities</p>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="heading">
+        <h2>Our <span>Services</span></h2>
+        <p>Explore the opportunities available to students.</p>
+    </div>
+
+    <div class="service-container">
+
+        <div class="service-card">
+            <div class="service-icon">🎓</div>
+            <h3>Quality Education</h3>
+            <p>Learn through academic programs designed to build knowledge and practical skills.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Technology & Labs</h3>
+            <p>Develop technical knowledge through practical learning and modern laboratories.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏢</div>
+            <h3>Placement Support</h3>
+            <p>Career guidance, professional development and placement preparation opportunities.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📚</div>
+            <h3>Library</h3>
+            <p>Access learning resources and academic materials to support your studies.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">⚽</div>
+            <h3>Sports & Activities</h3>
+            <p>Participate in extracurricular activities, sports and student events.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌍</div>
+            <h3>Student Development</h3>
+            <p>Build communication, teamwork, leadership and professional skills.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="heading">
+        <h2>Contact <span>Us</span></h2>
+        <p>Have questions? Get in touch with us.</p>
+    </div>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>📍 Rajkot-Morbi Road, Rajkot, Gujarat, India</p>
+            <p>📧 info@marwadiuniversity.ac.in</p>
+            <p>🌐 www.marwadiuniversity.ac.in</p>
+            <p>
+                Feel free to contact us for admission inquiries,
+                academic information and other university-related questions.
+            </p>
+        </div>
+
+        <form class="contact-form" onsubmit="sendMessage(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Subject" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Marwadi University</span>. All Rights Reserved.</p>
+    <p>Designed with ❤️ for Education</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navbar").classList.remove("active");
+    });
+});
+
+function sendMessage(event) {
+    event.preventDefault();
+    alert("Thank you! Your inquiry form is ready for backend integration.");
+    event.target.reset();
+}
+</script>
+
+</body>
+</html>
